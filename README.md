@@ -1,46 +1,92 @@
-# Getting Started with Create React App
+# 電脳弥生 - Dennou Yayoi
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+弥生とのLINE風AI会話アプリケーション
 
-## Available Scripts
+## 概要
 
-In the project directory, you can run:
+このアプリケーションは、弥生（やよい）というキャラクターとLINEのようなインターフェースで会話できるAIチャットアプリです。
+実際の弥生との会話データや、弥生に関する情報を基に、自然な会話を楽しむことができます。
 
-### `npm start`
+## 機能
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- 🗨️ LINE風のチャットインターフェース
+- 🤖 Kimi APIを使用したAI会話
+- 📊 弥生のデータを基にしたパーソナライズされた応答
+- 💾 会話履歴の管理
+- 📱 レスポンシブデザイン
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## セットアップ
 
-### `npm test`
+### 1. 依存関係のインストール
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+npm install
+```
 
-### `npm run build`
+### 2. 環境変数の設定
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`.env.example`をコピーして`.env`ファイルを作成し、Kimi APIキーを設定します。
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+cp .env.example .env
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`.env`ファイルに以下を追加：
+```
+REACT_APP_KIMI_API_KEY=your-actual-kimi-api-key
+```
 
-### `npm run eject`
+### 3. 開発サーバーの起動
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+npm start
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+ブラウザで `http://localhost:3000` を開きます。
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## データ構成
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- `src/data/yayoi_data.json`: 弥生に関する情報（記事、好み、思い出など）
+- `src/data/line_conversation.txt`: 実際のLINE会話履歴
 
-## Learn More
+## 技術スタック
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- React + TypeScript
+- Material-UI (MUI)
+- Kimi API (Moonshot AI)
+- Axios
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 使用方法
+
+1. 起動後、画面下部のテキストフィールドにメッセージを入力
+2. Enterキーまたは送信ボタンでメッセージを送信
+3. 弥生からの返答を待つ
+4. 会話を続ける
+
+## カスタマイズ
+
+### 弥生のキャラクター調整
+`src/services/kimiService.ts`内のシステムプロンプトを編集することで、弥生の話し方や性格を調整できます。
+
+### データの追加
+`src/data/yayoi_data.json`に新しい記事や情報を追加することで、弥生の知識を拡張できます。
+
+## トラブルシューティング
+
+### APIキーエラー
+`.env`ファイルに正しいKimi APIキーが設定されているか確認してください。
+
+### ビルドエラー
+```bash
+npm run build
+```
+
+### 依存関係の問題
+```bash
+rm -rf node_modules package-lock.json
+npm install
+```
+
+## ライセンス
+
+MIT License
